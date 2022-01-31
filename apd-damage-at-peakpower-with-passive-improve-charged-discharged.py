@@ -82,7 +82,7 @@ def heatflow(peakpower,PRF,R15):  #peak power in kW/cm2 #H20E bond h = 0.29, _jp
 
 	def Gain(Vbr,Vin):
 		if R15 >= 1E6: #there might be gain issue at high series resistance
-			return 1;
+			return 5;
 		else:
 			return((1-Vin/Vbr)**(-1*0.73))
 
@@ -191,10 +191,10 @@ def __main__():
 	#heatflow(60,PRF=1E4, R15=1E4) #A/cm2, PRF
 	#heatflow(0.3,PRF=970*1000, R15=0.1) #A/cm2, PRF
 	
-	for i in np.arange(60,90,10):
-		heatflow(i,PRF=1E4,R15=1E6)
+	#for i in np.arange(50,250,50):
+	#	heatflow(i,PRF=1E4,R15=1E6)
 
-	#for i in np.arange(10,30,5):
+	#for i in np.arange(1,10,1):
 	#	heatflow(i,PRF=970*1000,R15=1E6)
 		
 	#for i in np.arange(1,50,10):
@@ -206,9 +206,24 @@ def __main__():
 	#for i in  range(3,6,1):
 	#	heatflow(15,10**i)
 
+	#create figures 01-30-2022
+	#NOpssive passive for different PRF and plot threshold which 
+	#heatflow(70,PRF=1E4,R15=0.1)
+	#heatflow(7,PRF=111000,R15=0.1)
+	#heatflow(0.7,PRF=970000,R15=0.1)
+	#heatflow(0.2,PRF=3571000,R15=0.1)
+	
+	
+	## 10K
+	#heatflow(90,PRF=1E4,R15=10000)
+	#heatflow(1.0,PRF=970000,R15=10000)
 
+	## 1000K
+	heatflow(200,PRF=1E4,R15=1E6)
+	heatflow(3,PRF=970000,R15=1E6)
 
 	plt.ylim(0,500)
+	plt.xlim(1E-5,)
 	
 	plt.xlabel("Time (s)")
 	plt.ylabel("Temp (C)")
